@@ -7,71 +7,8 @@
 #include <cstring>
 #include <cstdlib>
 
-static void draw_circle(const glm::vec3& color, float radius, const glm::mat4& model) {
-    glColor3f(color[0], color[1], color[2]);
-
-    constexpr int n = 100;
-    constexpr float pi = 3.1415926535897f;
-
-    float inner_radius = radius / 2;
-
-    for (int i = 0; i < n; i++) {
-        float angle = i / (float)n * (pi * 2 - pi / 3);
-        float angle_next = (i + 1) / (float)n * (pi * 2 - pi / 3);
-
-        glm::vec4 point0 = { inner_radius * sinf(angle), inner_radius * cosf(angle), 0.0f, 1.0f };
-        glm::vec4 point1 = { radius * sinf(angle), radius * cosf(angle), 0.0f, 1.0f };
-        glm::vec4 point2 = { radius * sinf(angle_next), radius * cosf(angle_next), 0.0f, 1.0f };
-        glm::vec4 point3 = { inner_radius * sinf(angle_next), inner_radius * cosf(angle_next), 0.0f, 1.0f };
-
-        point0 = model * point0;
-        point1 = model * point1;
-        point2 = model * point2;
-        point3 = model * point3;
-
-        glVertex3f(point0[0], point0[1], point0[2]);
-        glVertex3f(point1[0], point1[1], point1[2]);
-        glVertex3f(point2[0], point2[1], point2[2]);
-
-        glVertex3f(point0[0], point0[1], point0[2]);
-        glVertex3f(point2[0], point2[1], point2[2]);
-        glVertex3f(point3[0], point3[1], point3[2]);
-    }
-}
-
 static void render() {
-    glBegin(GL_TRIANGLES);
-
-    constexpr float pi = 3.1415926535897f;
-    {
-        glm::mat4 model = glm::mat4(1.0f);
-
-        model = glm::translate(model, { 0.0f, 0.5f, 0.0f });
-        model = glm::rotate(model, glm::radians(150.0f), { 0.0f, 0.0f, 1.0f });
-
-        draw_circle({ 1.0f, 0.0f, 0.0f }, 0.5f, model);
-    }
-
-    float n = sqrt(0.25);
-    {
-        glm::mat4 model = glm::mat4(1.0f);
-
-        model = glm::translate(model, { -n, -n, 0.0f });
-        model = glm::rotate(model, glm::radians(-90.0f), { 0.0f, 0.0f, 1.0f });
-
-        draw_circle({ 0.0f, 1.0f, 0.0f }, 0.5f, model);
-    }
-
-    {
-        glm::mat4 model = glm::mat4(1.0f);
-
-        model = glm::translate(model, { n, -n, 0.0f });
-        model = glm::rotate(model, glm::radians(-30.0f), { 0.0f, 0.0f, 1.0f });
-
-        draw_circle({ 0.0f, 0.0f, 1.0f }, 0.5f, model);
-    }
-
-    CHECK_GL(glEnd());
+   
 }
 
 int main() {
@@ -83,8 +20,8 @@ int main() {
         return -1;
     }
 
-    // hint the version required: OpenGL 2.0
-    constexpr int version = 20;
+    // hint the version required: OpenGL 4.5
+    constexpr int version = 45;
     glfwWindowHint(GLFW_OPENGL_API, GLFW_OPENGL_API);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version / 10);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version % 10);
@@ -133,20 +70,19 @@ int main() {
         return -1;
     }
     std::cerr << "OpenGL version: " << glGetString(GL_VERSION) << '\n';
-
-    CHECK_GL(glEnable(GL_POINT_SMOOTH));
-    CHECK_GL(glEnable(GL_BLEND));
-    CHECK_GL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
-    CHECK_GL(glPointSize(64.0f));
-
+    
+  
     // start main game loop
     while (!glfwWindowShouldClose(window)) {
+        glfwPollEvents();
+
         // render graphics
+        glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
         CHECK_GL(glClear(GL_COLOR_BUFFER_BIT));
+
         render();
         // refresh screen
         glfwSwapBuffers(window);
-        glfwPollEvents();
     }
 
     glfwTerminate();

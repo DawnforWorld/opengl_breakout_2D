@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\opengl_breakout_2D\build\CMakeFiles\731c7cd774f3dd23b31fbdb44737a348\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\opengl_breakout_2D\thirdparty\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\opengl_breakout_2D\thirdparty\glfw\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="E:\opengl_breakout_2D\thirdparty\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="E:\opengl_breakout_2D\build\thirdparty\glfw\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{895AB195-EDB3-3806-86A5-8CCA725C782E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5C6D0F50-4B29-3A97-947A-3B7D8916E1D7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

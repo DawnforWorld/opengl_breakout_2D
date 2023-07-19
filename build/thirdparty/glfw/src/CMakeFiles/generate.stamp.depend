@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+E:/opengl_breakout_2D/build/CMakeFiles/cmake.verify_globs
+E:/opengl_breakout_2D/thirdparty/glfw/CMake/glfw3.pc.in
+E:/opengl_breakout_2D/thirdparty/glfw/src/CMakeLists.txt

@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/CMakeDependentOption.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/CheckIncludeFile.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/CheckLibraryExists.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/FindDoxygen.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/FindPackageMessage.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/FindThreads.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/GNUInstallDirs.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake
+D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake
+E:/opengl_breakout_2D/build/CMakeFiles/cmake.verify_globs
+E:/opengl_breakout_2D/thirdparty/glfw/CMake/glfw3Config.cmake.in
+E:/opengl_breakout_2D/thirdparty/glfw/CMakeLists.txt

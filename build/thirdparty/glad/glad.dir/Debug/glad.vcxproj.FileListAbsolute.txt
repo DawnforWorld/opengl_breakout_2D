@@ -1,0 +1,1 @@
+E:\opengl_breakout_2D\build\thirdparty\glad\glad.dir\Debug\glad.lib

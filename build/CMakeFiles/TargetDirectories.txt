@@ -1,0 +1,16 @@
+E:/opengl_breakout_2D/build/CMakeFiles/main.dir
+E:/opengl_breakout_2D/build/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/CMakeFiles/ALL_BUILD.dir
+E:/opengl_breakout_2D/build/CMakeFiles/ZERO_CHECK.dir
+E:/opengl_breakout_2D/build/thirdparty/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/thirdparty/glm/CMakeFiles/uninstall.dir
+E:/opengl_breakout_2D/build/thirdparty/glm/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/thirdparty/glm/CMakeFiles/ALL_BUILD.dir
+E:/opengl_breakout_2D/build/thirdparty/glm/glm/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/thirdparty/glfw/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/thirdparty/glfw/CMakeFiles/ALL_BUILD.dir
+E:/opengl_breakout_2D/build/thirdparty/glfw/src/CMakeFiles/glfw.dir
+E:/opengl_breakout_2D/build/thirdparty/glfw/src/CMakeFiles/update_mappings.dir
+E:/opengl_breakout_2D/build/thirdparty/glfw/src/CMakeFiles/INSTALL.dir
+E:/opengl_breakout_2D/build/thirdparty/glad/CMakeFiles/glad.dir
+E:/opengl_breakout_2D/build/thirdparty/glad/CMakeFiles/INSTALL.dir

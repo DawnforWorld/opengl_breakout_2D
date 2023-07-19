@@ -1,0 +1,10 @@
+^E:\OPENGL_BREAKOUT_2D\BUILD\CMAKEFILES\4377A4BCE6A1E5E7097C9833E995FA29\GENERATE.STAMP.RULE
+setlocal
+D:\cmake-3.26.4-windows-x86_64\bin\cmake.exe -SE:/opengl_breakout_2D -BE:/opengl_breakout_2D/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/opengl_breakout_2D/build/main.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
