@@ -1,4 +1,0 @@
-# CMake generation dependency list for this directory.
-D:/cmake-3.26.4-windows-x86_64/share/cmake-3.26/Modules/GNUInstallDirs.cmake
-E:/opengl_breakout_2D/build/CMakeFiles/cmake.verify_globs
-E:/opengl_breakout_2D/thirdparty/glm/glm/CMakeLists.txt
