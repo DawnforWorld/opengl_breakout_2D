@@ -7,11 +7,25 @@
 #include <cstring>
 #include <cstdlib>
 
+// read resource file
+#include <fstream>
+
 static void render() {
    
 }
 
 int main() {
+    std::fstream file;
+    file.open("./resource/shader/2.txt", std::ios::in);
+
+    if (file.is_open() == false) {
+        assert(false);
+    }
+
+    char buf[20]{};
+
+    file.read(buf, 20);
+
     if (!glfwInit()) {
         const char *errmsg;
         glfwGetError(&errmsg);
