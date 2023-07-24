@@ -7,8 +7,8 @@ Shader& Shader::use() {
 	return *this;
 }
 //Compiles the shader from given source code
-void Shader::Compile(const GLchar* vertexSource, const GLchar* fragmentSource, const GLchar* geometrySource) {
-	GLuint sVertex, sFragment, gShader;
+void Shader::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource) {
+	unsigned int sVertex, sFragment, gShader;
 	//vertex shader
 	sVertex = glCreateShader(GL_VERTEX_SHADER);//创建着色器
 	glShaderSource(sVertex, 1, &vertexSource, NULL);//替换着色器源代码，vertexSource要加载到着色器的源代码的字符串的指针数组。
@@ -48,7 +48,7 @@ void Shader::Compile(const GLchar* vertexSource, const GLchar* fragmentSource, c
 	}
 }
 
-void Shader::SetFloat(const GLchar* name, GLfloat value, GLboolean useShader) {
+void Shader::SetFloat(const char* name, float value, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -59,7 +59,7 @@ void Shader::SetFloat(const GLchar* name, GLfloat value, GLboolean useShader) {
 
 }
 
-void Shader::SetInteger(const GLchar* name, GLint value, GLboolean useShader) {
+void Shader::SetInteger(const char* name, int value, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -67,7 +67,7 @@ void Shader::SetInteger(const GLchar* name, GLint value, GLboolean useShader) {
 	glUniform1i(glGetUniformLocation(this->ID, name), value);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector2f(const GLchar* name, GLfloat x, GLfloat y, GLboolean useShader) {
+void Shader::SetVector2f(const char* name, float x, float y, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -75,7 +75,7 @@ void Shader::SetVector2f(const GLchar* name, GLfloat x, GLfloat y, GLboolean use
 	glUniform2f(glGetUniformLocation(this->ID, name), x, y);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector2f(const GLchar* name, const glm::vec2 &value, GLboolean useShader) {
+void Shader::SetVector2f(const char* name, const glm::vec2 &value, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -83,7 +83,7 @@ void Shader::SetVector2f(const GLchar* name, const glm::vec2 &value, GLboolean u
 	glUniform2f(glGetUniformLocation(this->ID, name), value.x, value.y);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z,GLboolean useShader) {
+void Shader::SetVector3f(const char* name, float x, float y, float z,bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -91,7 +91,7 @@ void Shader::SetVector3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z,GLb
 	glUniform3f(glGetUniformLocation(this->ID, name), x, y,z);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector3f(const GLchar* name, const glm::vec3& value, GLboolean useShader) {
+void Shader::SetVector3f(const char* name, const glm::vec3& value, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -99,7 +99,7 @@ void Shader::SetVector3f(const GLchar* name, const glm::vec3& value, GLboolean u
 	glUniform3f(glGetUniformLocation(this->ID, name), value.x, value.y,value.z);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector4f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z,GLfloat w, GLboolean useShader) {
+void Shader::SetVector4f(const char* name, float x, float y, float z,float w, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -107,7 +107,7 @@ void Shader::SetVector4f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z,GLf
 	glUniform4f(glGetUniformLocation(this->ID, name), x, y, z, w);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetVector4f(const GLchar* name, const glm::vec4& value, GLboolean useShader) {
+void Shader::SetVector4f(const char* name, const glm::vec4& value, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -115,7 +115,7 @@ void Shader::SetVector4f(const GLchar* name, const glm::vec4& value, GLboolean u
 	glUniform4f(glGetUniformLocation(this->ID, name), value.x, value.y, value.z, value.w);
 	//glGetUniformLocation- 返回统一变量的位置,glUniform为当前程序对象指定Uniform变量的值
 }
-void Shader::SetMatrix4(const GLchar* name, const glm::mat4 &matrix, GLboolean useShader) {
+void Shader::SetMatrix4(const char* name, const glm::mat4 &matrix, bool useShader) {
 	if (useShader)
 	{
 		this->use();
@@ -127,7 +127,7 @@ void Shader::SetMatrix4(const GLchar* name, const glm::mat4 &matrix, GLboolean u
 	//value_ptr指向由count个元素的数组的指针。
 }
 
-void Shader::checkCompileErrors(GLuint object, std::string type) {
+void Shader::checkCompileErrors(unsigned int object, std::string type) {
 	GLint success;
 	GLchar infoLog[1024];
 	if (type!="PROGRAM")
