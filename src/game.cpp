@@ -24,14 +24,8 @@ void game::Init() {
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	// load textures
 	ResourceManager::LoadTexture("./resource/image/awesomeface.png", true, "face");
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 6ba52ffe0f1d99a7e8132133151365d53826fc1d
+	//666
 }
-
 void game::Update(float dt) {
 
 }
