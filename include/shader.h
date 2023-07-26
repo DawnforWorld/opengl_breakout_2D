@@ -8,11 +8,11 @@
 class Shader
 {
 public:
-	GLuint ID;
+	unsigned int ID;
 
 	Shader(){}
 	Shader& use();
-	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = NULL);
+	void Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource = nullptr);
 	void SetFloat(const char* name, float value, bool useShader = false);
 	void SetInteger(const char* name, int value, bool useShader = false);
 	void SetVector2f(const char* name, float x,float y,bool useShader = false);
@@ -26,7 +26,7 @@ public:
 
 
 private:
-	void checkCompileErrors(GLuint object, std::string type);
+	void checkCompileErrors(unsigned int object, std::string type);
 
 };
 
