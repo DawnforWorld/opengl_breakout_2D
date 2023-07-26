@@ -23,7 +23,7 @@ void game::Init() {
 	//设置专用于渲染的控制
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	// load textures
-	ResourceManager::LoadTexture("./resource/awesomeface.png", true, "face");
+	ResourceManager::LoadTexture("./resource/image/awesomeface.png", true, "face");
 
 
 
