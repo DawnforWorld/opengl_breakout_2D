@@ -28,7 +28,7 @@ int main(int argc,char* argv[]) {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif // __APPLE__如果使用的是Mac OS X系统，你还需要加下面这行代码到你的初始化代码中这些配置才能起作用（将上面的代码解除注释）
 	glfwWindowHint(GLFW_RESIZABLE, false);
-	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout", NULL, NULL);//创建一个glfw窗口，参数为：宽、高、窗口标题。返GLFWwindow* 类型。
+	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout", nullptr, nullptr);//创建一个glfw窗口，参数为：宽、高、窗口标题。返GLFWwindow* 类型。
 	glfwMakeContextCurrent(window);// 通知GLFW将窗口window的上下文设置为当前线程的主上下文。
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) //GLAD是用来管理OpenGL的函数指针的，所以在调用任何OpenGL的函数之前我们需要初始化GLAD。

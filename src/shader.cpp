@@ -7,7 +7,9 @@ Shader& Shader::use() {
 	return *this;
 }
 //Compiles the shader from given source code
-void Shader::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource) {
+void Shader::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource)
+{
+
 	unsigned int sVertex, sFragment, gShader;
 	//vertex shader
 	sVertex = glCreateShader(GL_VERTEX_SHADER);//创建着色器
@@ -20,7 +22,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 	glCompileShader(sFragment);
 	checkCompileErrors(sFragment, "FRAGMENT");
 	//If geometry shader source code is given ,also compile geometry shader
-	if (geometrySource != NULL)
+	if (geometrySource != nullptr)
 	{
 		gShader = glCreateShader(GL_GEOMETRY_SHADER);
 		glShaderSource(gShader, 1, &geometrySource, NULL);
@@ -32,7 +34,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 	this->ID = glCreateProgram();
 	glAttachShader(this->ID, sVertex);//将着色器对象附加到program对象
 	glAttachShader(this->ID, sFragment);
-	if (geometrySource!=NULL)
+	if (geometrySource!=nullptr)
 	{
 		glAttachShader(this->ID, gShader);
 	}
@@ -42,7 +44,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 	//delete the sahder as thry're linked into our program now and longer necessery
 	glDeleteShader(sVertex);
 	glDeleteShader(sFragment);
-	if (geometrySource!=NULL)
+	if (geometrySource!=nullptr)
 	{
 		glDeleteShader(gShader);
 	}
@@ -128,8 +130,8 @@ void Shader::SetMatrix4(const char* name, const glm::mat4 &matrix, bool useShade
 }
 
 void Shader::checkCompileErrors(unsigned int object, std::string type) {
-	GLint success;
-	GLchar infoLog[1024];
+	int success;
+	char infoLog[1024];
 	if (type!="PROGRAM")
 	{
 		glGetShaderiv(object, GL_COMPILE_STATUS, &success);//从着色器对象返回一个参数（用来检测着色器编译是否成功）

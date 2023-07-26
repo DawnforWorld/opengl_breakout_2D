@@ -14,7 +14,7 @@ Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderF
 	Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 	return Shaders[name];
 }
-Shader ResourceManager::GetShader(std::string name)
+Shader& ResourceManager::GetShader(std::string name)
 {
 	return Shaders[name];
 
@@ -23,7 +23,7 @@ Texture2D ResourceManager::LoadTexture(const char* file, bool alpha, std::string
 	Textures[name] = loadTextureFromFile(file, alpha);
 	return Textures[name];
 }
-Texture2D ResourceManager::GetTexture(std::string name)
+Texture2D& ResourceManager::GetTexture(std::string name)
 {
 	return Textures[name];
 }
@@ -56,13 +56,16 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 		vertexCode = vShaderStream.str();
 		fragmentCode = fShaderStream.str();
 		//if geometry shader path is present,also load a geometry shader
-		if (gShaderFile!=NULL)
+		
+		if (gShaderFile!=nullptr)
 		{
+			
 			std::ifstream geometryShaderFile(gShaderFile);
 			std::stringstream gShaderStream;
 			gShaderStream << geometryShaderFile.rdbuf();
 			geometryShaderFile.close();
 			geometryCode = gShaderStream.str();
+			//std::cout << "dasdada" << std::endl;
 		}
 	}
 	catch (std::exception e)
@@ -73,8 +76,9 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 	const char* fShaderCode = fragmentCode.c_str();
 	const char* gShaderCode = geometryCode.c_str();
 
+
 	Shader shader;
-	shader.Compile(vShaderCode, fShaderCode, gShaderCode != NULL ? gShaderCode : NULL);
+	shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
 	return shader;
 
 
