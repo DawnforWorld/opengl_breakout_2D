@@ -14,7 +14,7 @@ game::~game() {
 
 void game::Init() {
 	//load shaders
-	ResourceManager::LoadShader("D:/vs/work/program_1/opengl_breakout_2D/resource/shader/sprite.vs", "D:/vs/work/program_1/opengl_breakout_2D/resource/shader/sprite.frag", nullptr, "sprite");
+	ResourceManager::LoadShader("./resource/shader/sprite.vs", "./resource/shader/sprite.frag", nullptr, "sprite");
 	//configure shaders
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
 		static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
@@ -23,7 +23,7 @@ void game::Init() {
 	//设置专用于渲染的控制
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	// load textures
-	ResourceManager::LoadTexture("D:/vs/work/program_1/opengl_breakout_2D/resource/awesomeface.png", true, "face");
+	ResourceManager::LoadTexture("./resource/awesomeface.png", true, "face");
 
 
 
