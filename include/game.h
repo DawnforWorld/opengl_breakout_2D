@@ -1,6 +1,8 @@
 #pragma once
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include<vector>
+#include"game_level.h"
 //#define GAME_H
 // 游戏当前的状态
 
@@ -9,14 +11,19 @@ enum GameState {
 	GAME_MENU,
 	GMAE_WIN,
 };
+// 初始化挡板的大小
+const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
 
+// 初始化当班的速率
+const float PLAYER_VELOCITY(1.0f);
 
 class game {
 public:
 	GameState State;
 	bool Keys[1024];
 	unsigned int  Width, Height;
-
+	std::vector<GameLevel> Levels;
+	unsigned int Level;
 	game(unsigned int  Width, unsigned int  Height);
 	~game();
 
