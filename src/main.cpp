@@ -63,7 +63,7 @@ int main(int argc,char* argv[]) {
 	{
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame - lastFrame;
+		lastFrame = currentFrame;
 		glfwPollEvents();//函数检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）。
 		
 		//管理用户输入

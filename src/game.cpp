@@ -40,7 +40,7 @@ void game::Init() {
 		static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").use().SetInteger("image", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-
+	 
 	ResourceManager::GetShader("particle").use().SetInteger("sprite", 0);
 	ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
 
@@ -121,7 +121,7 @@ void game::ProcessInput(float dt) {
 		}
 		if (this->Keys[GLFW_KEY_SPACE])
 		{
-			Ball->Stuck = false;
+ 			Ball->Stuck = false;
 		}
 
 	}

@@ -24,10 +24,10 @@ typedef std::tuple<bool, Direction, glm::vec2> Collision;
 // 初始化挡板的大小
 const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
 // 初始化当班的速率
-const float PLAYER_VELOCITY(0.1f);
+const float PLAYER_VELOCITY(500.0);
 
 // 初始化球速度
-const glm::vec2 INITIAL_BALL_VELOCITY(0.01f*2, -0.035f*2);
+const glm::vec2 INITIAL_BALL_VELOCITY(100.0f,-350.0f);
 // 球半径
 const float BALL_RADIUS = 12.5f;
 
