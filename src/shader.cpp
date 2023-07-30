@@ -14,6 +14,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 	//vertex shader
 	sVertex = glCreateShader(GL_VERTEX_SHADER);//创建着色器
 	glShaderSource(sVertex, 1, &vertexSource, NULL);//替换着色器源代码，vertexSource要加载到着色器的源代码的字符串的指针数组。
+
 	glCompileShader(sVertex);
 	checkCompileErrors(sVertex, "VERTEX");
 	//fragment shader

@@ -21,6 +21,7 @@ Shader& ResourceManager::GetShader(std::string name)
 }
 Texture2D ResourceManager::LoadTexture(const char* file, bool alpha, std::string name) {
 	Textures[name] = loadTextureFromFile(file, alpha);
+
 	return Textures[name];
 }
 Texture2D& ResourceManager::GetTexture(std::string name)
@@ -40,6 +41,7 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 	std::string vertexCode;
 	std::string fragmentCode;
 	std::string geometryCode;
+
 	try
 	{
 		// open file
@@ -55,6 +57,7 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 		// 将流转化为字符串
 		vertexCode = vShaderStream.str();
 		fragmentCode = fShaderStream.str();
+
 		//if geometry shader path is present,also load a geometry shader
 		
 		if (gShaderFile!=nullptr)
@@ -79,6 +82,7 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
 
 	Shader shader;
 	shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
+
 	return shader;
 
 
