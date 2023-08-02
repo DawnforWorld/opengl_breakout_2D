@@ -72,6 +72,7 @@ void GameLevel::init(std::vector<std::vector<unsigned int>>tileData, unsigned in
 				glm::vec2 pos(unit_width * x, unit_height * y);
 				glm::vec2 size(unit_width, unit_height);
 				GameObject obj(pos, size, ResourceManager::GetTexture("block_solid"), glm::vec3(0.8f, 0.8f, 0.7f));
+				obj.IsSolid = true;
 				this->Bricks.push_back(obj);
 			}
 			else if(tileData[y][x]>1)

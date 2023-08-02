@@ -31,6 +31,10 @@ const glm::vec2 INITIAL_BALL_VELOCITY(100.0f,-350.0f);
 // Çò°ë¾¶
 const float BALL_RADIUS = 12.5f;
 
+
+
+
+
 class game {
 public:
 	GameState State;
