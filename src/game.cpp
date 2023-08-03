@@ -95,6 +95,9 @@ void game::Update(float dt) {
 	this->DoCollisions();
 	// update particles
 	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+
+	this->UpdatePowerUps(dt);
+
 	if (ShakeTime>0.0f)
 	{
 		ShakeTime -= dt;
