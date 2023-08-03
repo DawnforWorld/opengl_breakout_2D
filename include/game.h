@@ -4,6 +4,7 @@
 #include<vector>
 #include"game_level.h"
 #include"ball_object.h"
+#include"powerup.h"
 //#define GAME_H
 // 游戏当前的状态
 
@@ -31,6 +32,10 @@ const glm::vec2 INITIAL_BALL_VELOCITY(100.0f,-350.0f);
 // 球半径
 const float BALL_RADIUS = 12.5f;
 
+
+
+
+
 class game {
 public:
 	GameState State;
@@ -38,8 +43,12 @@ public:
 	unsigned int  Width, Height;
 	std::vector<GameLevel> Levels;
 	unsigned int Level;
+
+	std::vector<PowerUp>  PowerUps;//跟踪游戏中被激活的道具的类型、持续时间、相关效果等状态，将它们存储在一个容器内
 	game(unsigned int  Width, unsigned int  Height);
 	~game();
+
+	
 
 	void Init();	//  初始化游戏状态（加载所有的着色器/纹理/关卡）
 	void ProcessInput(float dt);		//调用ProcessInput函数，并使用存储在Keys数组里的数据来处理输入
@@ -50,6 +59,9 @@ public:
 	//恢复
 	void ResetLevel();
 	void ResetPlayer();
+	//道具
+	void SpawnPowerUps(GameObject& block);//给定的砖块位置生成一个道具
+	void UpdatePowerUps(float dt);//管理所有当前被激活的道具。
 
 
 };
