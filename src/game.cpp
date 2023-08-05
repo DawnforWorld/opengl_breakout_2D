@@ -12,10 +12,6 @@ PostProcessor* Effects;
 
 float ShakeTime = 0.0f;
 
-bool CheckCollision(GameObject& one, GameObject& two);
-Collision CheckCollision(BallObject& one, GameObject& two);
-Direction VectorDirection(glm::vec2 closest);
-void ActivatePowerUp(PowerUp& powerUp);
 
 
 
@@ -133,15 +129,11 @@ void game::ProcessInput(float dt) {
 			{
 				Player->Position.x += velocity;
 				if (Ball->Stuck)
-				{
 					Ball->Position.x += velocity;
-				}
 			}
 		}
 		if (this->Keys[GLFW_KEY_SPACE])
-		{
- 			Ball->Stuck = false;
-		}
+			Ball->Stuck = false;
 
 	}
 }
@@ -204,7 +196,6 @@ void game::ResetPlayer()
 
 }
 
-
 bool IsOtherPowerUpActive(std::vector<PowerUp>& powerUps, std::string type);
 
 void game::UpdatePowerUps(float dt)
@@ -212,6 +203,7 @@ void game::UpdatePowerUps(float dt)
 	for (PowerUp& powerUp : this->PowerUps)
 	{
 		powerUp.Position += powerUp.Velocity * dt;
+
 		if (powerUp.Activated)
 		{
 			powerUp.Duration -= dt;
@@ -313,6 +305,20 @@ void ActivatePowerUp(PowerUp& powerUp)
 	}
 }
 
+bool IsOtherPowerUpActive(std::vector<PowerUp>& powerUps, std::string type)
+{
+	for (const PowerUp& powerUp : powerUps)
+	{
+		if (powerUp.Activated)
+			if (powerUp.Type == type)
+				return true;
+	}
+	return false;
+}
+
+bool CheckCollision(GameObject& one, GameObject& two);
+Collision CheckCollision(BallObject& one, GameObject& two);
+Direction VectorDirection(glm::vec2 closest);
 
 void game::DoCollisions()
 {
@@ -475,13 +481,3 @@ Direction VectorDirection(glm::vec2 target)
 
 
 
-bool IsOtherPowerUpActive(std::vector<PowerUp>& powerUps, std::string type)
-{
-	for (const PowerUp& powerUp : powerUps)
-	{
-		if (powerUp.Activated)
-			if (powerUp.Type == type)
-				return true;
-	}
-	return false;
-}
