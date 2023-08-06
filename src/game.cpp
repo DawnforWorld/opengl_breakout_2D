@@ -3,6 +3,10 @@
 #include"sprite_renderer.h"
 #include"particle_generator.h"
 #include"post_processor.h"
+#include<windows.h>
+#include <mmsystem.h>
+#include<dsound.h>
+#pragma comment(lib, "WINMM.LIB")
 
 SpriteRenderer* Renderer;
 GameObject* Player;
@@ -11,6 +15,7 @@ ParticleGenerator* Particles;
 PostProcessor* Effects;
 
 float ShakeTime = 0.0f;
+
 
 
 
@@ -81,11 +86,16 @@ void game::Init() {
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS,-BALL_RADIUS * 2.0f);
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY,ResourceManager::GetTexture("face"));
+	
+	mciSendString(TEXT("open ./resource/music/breakout.wma alias mysong"), NULL, 0, NULL);
+	mciSendString(TEXT("play mysong repeat"), NULL, 0, NULL);
+
 }
 
 
 void game::Update(float dt) {
 	// 更新对象
+
 	Ball->Move(dt, this->Width);
 	// 检测碰撞
 	this->DoCollisions();
@@ -104,6 +114,7 @@ void game::Update(float dt) {
 	{
 		this->ResetLevel();
 		this->ResetPlayer();
+
 	}
 
 }
@@ -141,6 +152,7 @@ void game::ProcessInput(float dt) {
 void game::Render() {
 	if(this->State == GAME_ACTIVE)
 	{ 
+
 		Effects->BeginRender();
 		// 绘制背景
 		// 绘制关卡
@@ -193,6 +205,10 @@ void game::ResetPlayer()
 	Ball->PassThrough = Ball->Sticky = false;
 	Player->Color = glm::vec3(1.0f);
 	Ball->Color = glm::vec3(1.0f);
+	mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+	mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+	mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+	mciSendString(TEXT("close daoju"), NULL, 0, NULL);
 
 }
 
@@ -327,6 +343,7 @@ void game::DoCollisions()
 		if (!box.Destroyed)
 		{
 			Collision collision = CheckCollision(*Ball, box);
+
 			if (std::get<0>(collision)) // /如果collision 是 true
 			{
 				//  如果砖块不是实心就销毁砖块
@@ -334,14 +351,27 @@ void game::DoCollisions()
 				{
 					box.Destroyed = true;
 					this->SpawnPowerUps(box);
+					mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+					mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+					mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+					mciSendString(TEXT("close daoju"), NULL, 0, NULL);
+					mciSendString(TEXT("open ./resource/music/bleep_1.wma alias feishixin"), NULL, 0, NULL);
+					mciSendString(TEXT("play feishixin repeat"), NULL, 0, NULL);
 
 				}
 				//  碰撞处理
 				else
-				{
-					// 如果是实心的砖块则激活shake特效
+				{// 如果是实心的砖块则激活shake特效
+					
+					
 					ShakeTime = 0.05f;
 					Effects->Shake = true;
+					mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+					mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+					mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+					mciSendString(TEXT("close daoju"), NULL, 0, NULL);
+					mciSendString(TEXT("open ./resource/music/solid.wma alias shixin"), NULL, 0, NULL);
+					mciSendString(TEXT("play shixin repeat"), NULL, 0, NULL);
 				}
 				Direction dir = std::get<1>(collision);
 				glm::vec2 diff_vector = std::get<2>(collision);
@@ -368,11 +398,13 @@ void game::DoCollisions()
 						else
 							Ball->Position.y += penetration; // 下移
 					}
+
 				}
 				
 			}
 		}
 	}
+
 	//检查powerup碰撞
 	for (PowerUp& powerUp : this->PowerUps)
 	{
@@ -385,6 +417,12 @@ void game::DoCollisions()
 				ActivatePowerUp(powerUp);
 				powerUp.Destroyed = true;
 				powerUp.Activated = true;
+				mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+				mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+				mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+				mciSendString(TEXT("close daoju"), NULL, 0, NULL);
+				mciSendString(TEXT("open ./resource/music/powerup.wma alias daoju"), NULL, 0, NULL);
+				mciSendString(TEXT("play daoju repeat"), NULL, 0, NULL);
 			}
 		}
 	}
@@ -405,8 +443,16 @@ void game::DoCollisions()
 
 		Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity);
 		Ball->Velocity.y = -1 * abs(Ball->Velocity.y);//粘板问题
-
-		Ball->Stuck = Ball->Sticky;
+		
+		Ball->Stuck = Ball->Sticky;		
+		mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+		mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+		mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+		mciSendString(TEXT("close daoju"), NULL, 0, NULL);
+		mciSendString(TEXT("open ./resource/music/bleep.wma alias dangban"), NULL, 0, NULL);
+		mciSendString(TEXT("play dangban repeat"), NULL, 0, NULL);
+		
+		
 	}
 
 	
@@ -427,6 +473,10 @@ bool CheckCollision(GameObject& one, GameObject& two)
 		two.Position.y + two.Size.y >= one.Position.y;
 	// 只有两个轴向都有碰撞时才碰撞
 	return collisionX && collisionY;
+	mciSendString(TEXT("close shixin"), NULL, 0, NULL);
+	mciSendString(TEXT("close feishixin"), NULL, 0, NULL);
+	mciSendString(TEXT("close dangban"), NULL, 0, NULL);
+	mciSendString(TEXT("close daoju"), NULL, 0, NULL);
 }
 
 Collision CheckCollision(BallObject& one, GameObject& two) 
