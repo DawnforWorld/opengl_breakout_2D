@@ -5,13 +5,15 @@
 #include"game_level.h"
 #include"ball_object.h"
 #include"powerup.h"
-//#define GAME_H
+
+
+
 // 游戏当前的状态
 
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
-	GMAE_WIN,
+	GAME_WIN
 };
 
 enum Direction {
@@ -43,6 +45,8 @@ public:
 	unsigned int  Width, Height;
 	std::vector<GameLevel> Levels;
 	unsigned int Level;
+	unsigned int Lives;
+	bool KeysProcessed[1024];
 
 	std::vector<PowerUp>  PowerUps;//跟踪游戏中被激活的道具的类型、持续时间、相关效果等状态，将它们存储在一个容器内
 	game(unsigned int  Width, unsigned int  Height);
