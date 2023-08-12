@@ -30,7 +30,7 @@ float ShakeTime = 0.0f;
 
 
 game::game(unsigned int  width, unsigned int  height) 
-	:State(GAME_ACTIVE), Keys(), Width(width), Height(height), Lives(3)
+	:State(GAME_MENU), Keys(), Width(width), Height(height), Lives(3)
 {
 
 }
